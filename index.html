@@ -365,6 +365,14 @@ footer {
 </div>
 
 <script>
+const SUPABASE_URL = https://rorowrnjmimrjekqpedw.supabase.co";
+const SUPABASE_KEY = "sb_publishable_PFn-h_8fDXhNH6bCoMULXA_LfOO36Tf";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
 let currentMode = "signup";
 
 function openAccount(mode) {
@@ -409,25 +417,81 @@ function updateForm() {
     signup ? "Log in" : "Sign up";
 }
 
-document.getElementById("accountForm").addEventListener("submit",
-  function(event) {
+document.getElementById("accountForm").addEventListener(
+  "submit",
+  async function(event) {
     event.preventDefault();
 
-    if (currentMode === "signup") {
-      const password = document.getElementById("password").value;
-      const confirmPassword =
-        document.getElementById("confirmPassword").value;
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const button = document.getElementById("submitButton");
 
-      if (password !== confirmPassword) {
-        alert("Your passwords do not match.");
-        return;
+    button.disabled = true;
+    button.textContent = "PLEASE WAIT...";
+
+    try {
+      if (currentMode === "signup") {
+        const fullName =
+          document.getElementById("fullName").value.trim();
+
+        const username =
+          document.getElementById("username").value.trim();
+
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+          throw new Error("Your passwords do not match.");
+        }
+
+        if (password.length < 8) {
+          throw new Error("Password must contain at least 8 characters.");
+        }
+
+        const { data, error } = await supabaseClient.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              full_name: fullName,
+              username: username
+            }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          alert("Welcome to PROJECT VOD! Your account is ready.");
+        } else {
+          alert("Registration successful! Check your email to confirm your account.");
+        }
+
+        document.getElementById("accountForm").reset();
+        closeAccount();
+
+      } else {
+        const { error } =
+          await supabaseClient.auth.signInWithPassword({
+            email: email,
+            password: password
+          });
+
+        if (error) throw error;
+
+        alert("Welcome back to PROJECT VOD!");
+        document.getElementById("accountForm").reset();
+        closeAccount();
       }
-    }
 
-    alert(
-      "This is a PROJECT VOD design demo. Real account registration " +
-      "will be connected securely in a later step."
-    );
+    } catch (error) {
+      alert(error.message);
+
+    } finally {
+      button.disabled = false;
+      button.textContent =
+        currentMode === "signup" ? "CREATE ACCOUNT" : "LOG IN";
+    }
   }
 );
 </script>
