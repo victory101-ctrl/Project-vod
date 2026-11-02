@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT VOD</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #08070d;
+  color: white;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6%;
+  border-bottom: 1px solid #292333;
+  background: #0d0b13;
+}
+
+.logo {
+  color: #e8c35a;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: #a77aff;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.join-btn, .hero-btn {
+  background: linear-gradient(100deg, #d7ad43, #9b68ef);
+  color: #09070d;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+.hero {
+  text-align: center;
+  padding: 95px 20px 75px;
+  background:
+    radial-gradient(circle at 50% 30%, #382052 0%, #100d19 42%, #08070d 75%);
+}
+
+.hero h1 {
+  font-size: clamp(35px, 8vw, 65px);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: #e8c35a;
+}
+
+.hero p {
+  color: #c3bdcf;
+  max-width: 550px;
+  margin: 0 auto 28px;
+}
+
+.section {
+  padding: 55px 6%;
+  text-align: center;
+}
+
+.section h2 {
+  color: #e8c35a;
+  margin-bottom: 25px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #15111f;
+  border: 1px solid #30243e;
+  padding: 25px;
+  border-radius: 13px;
+}
+
+.card h3 {
+  color: #c49aff;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #bbb3c7;
+  font-size: 14px;
+}
+
+.final-section {
+  background: linear-gradient(120deg, #171020, #251638);
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.final-section h2 {
+  color: #e8c35a;
+  margin-bottom: 12px;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #8d8598;
+  font-size: 13px;
+}
+
+/* ACCOUNT WINDOW */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.modal-box {
+  background: #15111f;
+  border: 1px solid #a77aff;
+  border-radius: 15px;
+  padding: 28px 22px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  margin: auto;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: white;
+  background: transparent;
+  font-size: 25px;
+}
+
+.modal-box h2 {
+  text-align: center;
+  color: #e8c35a;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.modal-box input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border-radius: 7px;
+  border: 1px solid #49385d;
+  background: #09070d;
+  color: white;
+  outline: none;
+}
+
+.modal-box input:focus {
+  border-color: #b58aff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background: linear-gradient(100deg, #d7ad43, #9b68ef);
+  color: #09070d;
+  font-size: 15px;
+}
+
+.switch-text {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  margin-top: 18px;
+}
+
+.switch-text button {
+  color: #d7ad43;
+  background: transparent;
+}
+
+.demo-note {
+  color: #a99db8;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 15px;
+  }
+
+  nav a {
+    display: none;
+  }
+
+  .hero {
+    padding: 75px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">♛ PROJECT <span>VOD</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Discover</a>
+    <a href="#community">Community</a>
+  </nav>
+  <button class="join-btn" onclick="openAccount('signup')">
+    Join VOD
+  </button>
+</header>
+
+<section class="hero" id="home">
+  <h1>WELCOME TO <span>PROJECT VOD</span></h1>
+  <p>
+    Connect with the world. Share your moments.
+    Discover new people. Experience a new generation of social media.
+  </p>
+  <button class="hero-btn" onclick="openAccount('signup')">
+    JOIN THE MOVEMENT
+  </button>
+</section>
+
+<section class="section" id="features">
+  <h2>EXPLORE PROJECT VOD</h2>
+
+  <div class="features">
+    <div class="card">
+      <h3>VOD Shorts</h3>
+      <p>Discover entertaining short videos from around the world.</p>
+    </div>
+
+    <div class="card">
+      <h3>Global Community</h3>
+      <p>Connect, follow people and share your ideas.</p>
+    </div>
+
+    <div class="card">
+      <h3>VOD Live</h3>
+      <p>Experience live moments and connect with audiences.</p>
+    </div>
+
+    <div class="card">
+      <h3>Messages</h3>
+      <p>Stay connected through private conversations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Creator Rewards</h3>
+      <p>A future home for creators and their communities.</p>
+    </div>
+
+    <div class="card">
+      <h3>Your Platform</h3>
+      <p>Express yourself and be part of something new.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-section" id="community">
+  <h2>THE FUTURE IS SOCIAL</h2>
+  <p>Be part of the PROJECT VOD journey.</p>
+  <br>
+  <button class="join-btn" onclick="openAccount('signup')">
+    CREATE YOUR ACCOUNT
+  </button>
+</section>
+
+<footer>
+  © 2026 PROJECT VOD. All rights reserved.
+</footer>
+
+<!-- ACCOUNT WINDOW -->
+
+<div class="modal" id="accountModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeAccount()">×</button>
+
+    <h2 id="formTitle">JOIN PROJECT VOD</h2>
+    <p class="subtitle" id="formSubtitle">
+      Create your place in the VOD community.
+    </p>
+
+    <form id="accountForm">
+
+      <div id="signupFields">
+        <input type="text" id="fullName"
+          placeholder="Full name">
+
+        <input type="text" id="username"
+          placeholder="Choose a username">
+
+        <input type="password" id="confirmPassword"
+          placeholder="Confirm password">
+      </div>
+
+      <input type="email" id="email"
+        placeholder="Email address" required>
+
+      <input type="password" id="password"
+        placeholder="Password" required>
+
+      <button class="submit-btn" id="submitButton" type="submit">
+        CREATE ACCOUNT
+      </button>
+    </form>
+
+    <p class="switch-text">
+      <span id="switchLabel">Already have an account?</span>
+      <button id="switchButton" onclick="switchAccount()">
+        Log in
+      </button>
+    </p>
+
+    <p class="demo-note">
+      DEMO ONLY — Account creation is not connected yet.
+      Do not enter a real password.
+    </p>
+  </div>
+</div>
+
+<script>
+let currentMode = "signup";
+
+function openAccount(mode) {
+  currentMode = mode;
+  updateForm();
+  document.getElementById("accountModal").style.display = "flex";
+}
+
+function closeAccount() {
+  document.getElementById("accountModal").style.display = "none";
+}
+
+function switchAccount() {
+  currentMode = currentMode === "signup" ? "login" : "signup";
+  updateForm();
+}
+
+function updateForm() {
+  const signup = currentMode === "signup";
+
+  document.getElementById("formTitle").textContent =
+    signup ? "JOIN PROJECT VOD" : "WELCOME BACK";
+
+  document.getElementById("formSubtitle").textContent =
+    signup ? "Create your place in the VOD community." :
+    "Log in to your VOD account.";
+
+  document.getElementById("signupFields").style.display =
+    signup ? "block" : "none";
+
+  document.getElementById("fullName").required = signup;
+  document.getElementById("username").required = signup;
+  document.getElementById("confirmPassword").required = signup;
+
+  document.getElementById("submitButton").textContent =
+    signup ? "CREATE ACCOUNT" : "LOG IN";
+
+  document.getElementById("switchLabel").textContent =
+    signup ? "Already have an account?" : "New to PROJECT VOD?";
+
+  document.getElementById("switchButton").textContent =
+    signup ? "Log in" : "Sign up";
+}
+
+document.getElementById("accountForm").addEventListener("submit",
+  function(event) {
+    event.preventDefault();
+
+    if (currentMode === "signup") {
+      const password = document.getElementById("password").value;
+      const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Your passwords do not match.");
+        return;
+      }
+    }
+
+    alert(
+      "This is a PROJECT VOD design demo. Real account registration " +
+      "will be connected securely in a later step."
+    );
+  }
+);
+</script>
+
+</body>
+</html>
