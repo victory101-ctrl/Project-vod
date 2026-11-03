@@ -336,15 +336,16 @@ footer {
           placeholder="Choose a username">
 
         <input type="password" id="confirmPassword"
-          placeholder="Confirm password">
+  placeholder="Confirm password">
+<button type="button" onclick="togglePassword('confirmPassword', this)">Show</button>
       </div>
 
       <input type="email" id="email"
         placeholder="Email address" required>
 
       <input type="password" id="password"
-        placeholder="Password" required>
-
+  placeholder="Password" required>
+<button type="button" onclick="togglePassword('password', this)">Show</button>
       <button class="submit-btn" id="submitButton" type="submit">
         CREATE ACCOUNT
       </button>
@@ -494,6 +495,17 @@ document.getElementById("accountForm").addEventListener(
     }
   }
 );
+  function togglePassword(id, button) {
+  const input = document.getElementById(id);
+
+  if (input.type === "password") {
+    input.type = "text";
+    button.textContent = "Hide";
+  } else {
+    input.type = "password";
+    button.textContent = "Show";
+  }
+  }
 </script>
 
 </body>
