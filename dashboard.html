@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT VOD | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="dashboard">
+    <h1>PROJECT VOD</h1>
+    <h2>Welcome back!</h2>
+
+    <section class="profile-card">
+      <div id="avatar">V</div>
+      <h3 id="displayName">Loading profile...</h3>
+      <p id="username"></p>
+      <p id="bio"></p>
+    </section>
+
+    <button id="logoutButton">LOG OUT</button>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+  const supabaseClient = supabase.createClient(
+  "https://rorowrnjmimrjekqpedw.supabase.co",
+  "sb_publishable_PFn-h_8fDXhNH6bCoMULXA_LfOO36Tf"
+);
+
+    async function loadDashboard() {
+      const { data: { user }, error } =
+        await supabaseClient.auth.getUser();
+
+      if (error || !user) {
+        window.location.href = "index.html";
+        return;
+      }
+
+      const { data: profile, error: profileError } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .single();
+
+      if (profileError) {
+        document.getElementById("displayName").textContent =
+          "Profile not found";
+        return;
+      }
+
+      document.getElementById("displayName").textContent =
+        profile.display_name || profile.full_name || "User";
+
+      document.getElementById("username").textContent =
+        profile.username ? "@" + profile.username : "";
+
+      document.getElementById("bio").textContent =
+        profile.bio || "No bio yet.";
+
+      if (profile.avatar_url) {
+        document.getElementById("avatar").innerHTML =
+          `<img src="${profile.avatar_url}" alt="Profile picture">`;
+      }
+    }
+
+    document.getElementById("logoutButton")
+      .addEventListener("click", async () => {
+        await supabaseClient.auth.signOut();
+        window.location.href = "index.html";
+      });
+
+    loadDashboard();
+  </script>
+
+</body>
+</html>
