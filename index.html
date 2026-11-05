@@ -570,9 +570,7 @@ document.getElementById("accountForm").addEventListener(
 
         if (error) throw error;
 
-        alert("Welcome back to PROJECT VOD!");
-        document.getElementById("accountForm").reset();
-        closeAccount();
+        window.location.href = "dashboard.html";
       }
 
     } catch (error) {
