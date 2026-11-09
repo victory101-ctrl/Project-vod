@@ -552,3 +552,13 @@ header nav a {
 header nav a:hover {
     color: #f5e7c5;
 }
+/* FIX HEADER LINKS */
+
+header a {
+    color: #d9b66f !important;
+    text-decoration: none !important;
+}
+
+header a:hover {
+    color: #f5e7c5 !important;
+}
