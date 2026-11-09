@@ -448,3 +448,81 @@ textarea:focus {
     text-align: center;
     margin-top: 15px;
 }
+/* PROJECT VOD HOMEPAGE LUXURY STYLING */
+
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: radial-gradient(circle at center, #302319 0%, #100d0b 50%, #08070d 100%);
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(35px, 8vw, 65px);
+    color: #f5e7c5;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d9b66f;
+}
+
+.hero p {
+    color: #c5bba9;
+    max-width: 550px;
+    margin: 0 auto 30px;
+}
+
+.hero-btn, .join-btn {
+    display: inline-block;
+    background: linear-gradient(100deg, #c9a45c, #f0d99b);
+    color: #09080b;
+    padding: 13px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 65px 6%;
+    text-align: center;
+}
+
+.section h2 {
+    color: #d9b66f;
+    margin-bottom: 30px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #15121a;
+    border: 1px solid #493b29;
+    padding: 28px;
+    border-radius: 14px;
+}
+
+.card h3 {
+    color: #d9b66f;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #bbb;
+    font-size: 14px;
+}
+
+.final-section {
+    background: linear-gradient(120deg, #17120d, #292016);
+    padding: 65px 20px;
+    text-align: center;
+}
+
+.final-section h2 {
+    color: #d9b66f;
+    margin-bottom: 15px;
+}
