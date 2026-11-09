@@ -526,3 +526,29 @@ textarea:focus {
     color: #d9b66f;
     margin-bottom: 15px;
 }
+/* PROJECT VOD NAVIGATION FIX */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+}
+
+header nav a {
+    color: #d9b66f;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header nav a:hover {
+    color: #f5e7c5;
+}
