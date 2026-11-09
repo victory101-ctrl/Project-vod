@@ -328,3 +328,123 @@ textarea:focus {
     }
 
     }
+/* PROJECT VOD ACCOUNT WINDOW */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.modal-box {
+    background: #15121a;
+    border: 1px solid #c9a45c;
+    border-radius: 18px;
+    padding: 30px 24px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    margin: auto;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: white;
+    background: transparent;
+    font-size: 25px;
+}
+
+.modal-box h2 {
+    text-align: center;
+    color: #d9b66f;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.modal-box input {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #493f32;
+    background: #09080b;
+    color: white;
+    outline: none;
+}
+
+.modal-box input:focus {
+    border-color: #d9b66f;
+}
+
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap input {
+    padding-right: 45px;
+}
+
+.eye-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #aaa;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.eye-btn svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: linear-gradient(100deg, #c9a45c, #f0d99b);
+    color: #09080b;
+    font-size: 15px;
+}
+
+.switch-text {
+    text-align: center;
+    color: #bbb;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+.switch-text button {
+    color: #d9b66f;
+    background: transparent;
+}
+
+.demo-note {
+    color: #aaa;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 15px;
+}
