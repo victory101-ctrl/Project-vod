@@ -582,3 +582,38 @@ header a:hover {
         padding: 10px 22px;
     }
 }
+/* PROJECT VOD MOBILE HEADER LAYOUT */
+
+@media (max-width: 600px) {
+
+    header {
+        display: grid !important;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 18px 8px;
+        padding: 18px 5%;
+    }
+
+    header .logo {
+        font-size: 23px;
+        white-space: nowrap;
+    }
+
+    header nav {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+    }
+
+    header nav a {
+        font-size: 14px;
+    }
+
+    header .join-btn {
+        padding: 10px 16px;
+        margin: 0;
+        white-space: nowrap;
+    }
+}
